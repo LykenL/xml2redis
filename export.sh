@@ -37,9 +37,8 @@ cd "$(dirname "$0")"
 
 docker compose up -d redis
 
-ARGS="-v /data/config.xml"
+ARGS="/data/config.xml"
 if [ -n "$VERBOSE" ]; then
     ARGS="-v $ARGS"
 fi
-
 docker compose run --rm -v "$XML:/data/config.xml:ro" app python -m app.main $ARGS

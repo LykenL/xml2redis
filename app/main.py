@@ -7,12 +7,15 @@ Command line entry point:
 
 import argparse
 import sys
+import os
 
 import redis
 
 from app.parser import SUBDOMAINS_KEY, parse_config, subdomains_json
 
-DEFAULT_REDIS_URL = "redis://localhost:6379/0"
+#DEFAULT_REDIS_URL = "redis://localhost:6379/0"
+DEFAULT_REDIS_URL = os.environ.get("REDIS_URL", "redis://localhost:6379/0")
+
 
 
 def export(path, redis_url):
